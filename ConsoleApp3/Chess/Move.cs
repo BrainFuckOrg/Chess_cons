@@ -1,4 +1,4 @@
-namespace Move;
+namespace MoveNameSpace;
 
 public class Move
 {

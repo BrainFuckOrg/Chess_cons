@@ -1,4 +1,4 @@
-namespace GameStart;
+namespace GameStartNameSpace;
 
 public class GameStart
 {

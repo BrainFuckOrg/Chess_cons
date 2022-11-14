@@ -1,4 +1,4 @@
-namespace GameLoop;
+namespace GameLoopNameSpace;
 
 public class GameLoop
 {
