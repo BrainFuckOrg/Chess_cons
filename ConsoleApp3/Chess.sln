@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{0C4B037A-BAA1-4DDB-854F-E7AE4029C760}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess", "Chess\Chess.csproj", "{0C4B037A-BAA1-4DDB-854F-E7AE4029C760}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
