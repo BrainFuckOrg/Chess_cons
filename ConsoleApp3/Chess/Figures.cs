@@ -2,6 +2,7 @@ namespace FiguresNameSpace;
 
 public enum Figures
 {
+    Empty,
     PawnW,
     BishopW,
     KnightW,

@@ -1,10 +1,11 @@
+using Fig=FiguresNameSpace.Figures;
 namespace FieldNameSpace;
 
 public class Field
 {
-    private Figures.Figures[,] table;
+    private Fig[,] table;
 
-    public Field(Figures.Figures[,] field)
+    public Field(Fig[,] field)
     {
         table = field;
     }

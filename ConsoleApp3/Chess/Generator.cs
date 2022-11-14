@@ -8,9 +8,14 @@ public static class Generator
     public static Fig[,] Generate()
     {
         Fig[,] field = new Fig[8, 8];
-        for (int i = 0; i < UPPER; i++)
+        for (int i = 0; i < 8; i++)
         {
-            
+            field[0, i] = LastLineW[i];
+            field[1, i] = Fig.PawnW;
+            field[6, i] = Fig.PawnB;
+            field[7, i] = LastLineB[i];
+            for (int j = 2; j < 6; j++) field[j, i] = Fig.Empty;
         }
+        return field;
     }
 }
