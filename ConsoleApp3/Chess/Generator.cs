@@ -1,4 +1,4 @@
-namespace Chess;
+namespace Generator;
 
 public static class Generator
 {

@@ -1,4 +1,4 @@
-namespace Chess;
+namespace Move;
 
 public class Move
 {

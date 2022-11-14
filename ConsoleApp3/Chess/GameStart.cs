@@ -1,4 +1,4 @@
-namespace Chess;
+namespace GameStart;
 
 public class GameStart
 {

@@ -1,4 +1,4 @@
-namespace Chess;
+namespace IsEnd;
 
 public static class IsEnd
 {

@@ -1,4 +1,4 @@
-namespace Chess;
+namespace Field;
 
 public class Field
 {
