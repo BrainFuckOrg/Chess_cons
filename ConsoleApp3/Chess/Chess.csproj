@@ -8,4 +8,8 @@
         <RootNamespace>ConsoleApp3</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="IFigureCanMove.cs" />
+    </ItemGroup>
+
 </Project>
