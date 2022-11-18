@@ -3,10 +3,10 @@ namespace FieldNameSpace;
 
 public class Field
 {
-    private Fig[,] table;
+    public Fig[,] Table { get; set; }
 
     public Field(Fig[,] field)
     {
-        table = field;
+        Table = field;
     }
 }

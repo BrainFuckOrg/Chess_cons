@@ -1,6 +1,9 @@
 namespace MoveNameSpace;
 
-public class Move
+public static class Move
 {
-    
+    /*public static bool Move()
+    {
+        //dosomething
+    }*/
 }
