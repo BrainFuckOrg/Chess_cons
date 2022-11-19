@@ -5,7 +5,8 @@ namespace RenderingNameSpace;
 public static class Rendering
 {
     private static Dictionary<Figures, Char> _figureRender = new Dictionary<Figures, Char>();
-
+    private static ConsoleColor _background = Console.ForegroundColor;
+    private static ConsoleColor _foreground = Console.ForegroundColor;
     static Rendering()
     {
         SetFigureRendering();
@@ -39,8 +40,8 @@ public static class Rendering
         Console.WriteLine("  a b c d e f g h");
         for (int i = 7; i >= 0; i--)
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = _background;
+            Console.ForegroundColor = _foreground;
             Console.Write((i+1)+" ");
             for (int j = 0; j < 8; j++)
             {
@@ -48,10 +49,11 @@ public static class Rendering
                 Console.ForegroundColor = Chess.MainClass.WhiteFigures.Contains(FieldNameSpace.Field.SingleField.Table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
+
+        Console.ForegroundColor = _foreground;
+        Console.BackgroundColor = _background;
     }
     
 }
