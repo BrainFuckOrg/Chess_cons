@@ -2,11 +2,11 @@ namespace GameLoopNameSpace;
 
 public static class GameLoop
 {
-    public static void Loop(FieldNameSpace.Field field)
+    public static void Loop()
     {
         while (true)
         {
-            RenderingNameSpace.Rendering.ShowField(field.Table);
+            RenderingNameSpace.Rendering.ShowField();
             break;
         }
     }
