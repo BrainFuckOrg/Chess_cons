@@ -36,15 +36,17 @@ public static class Rendering
 
     public static void ShowField(Figures[,] table)
     {
-        for (int i = 0; i < 8; i++)
+        Console.WriteLine("  a b c d e f g h");
+        for (int i = 7; i >= 0; i--)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write((i+1)+" ");
             for (int j = 0; j < 8; j++)
             {
-                Console.BackgroundColor = (i + j) % 2 == 0 ? ConsoleColor.Gray : ConsoleColor.Yellow;
+                Console.BackgroundColor = (i + j) % 2 == 0 ? ConsoleColor.DarkGray : ConsoleColor.Gray;
                 Console.ForegroundColor = Chess.MainClass.WhiteFigures.Contains(table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
-                Console.Write(" "+_figureRender[table[i,j]]+" ");
+                Console.Write(_figureRender[table[i,j]]+" ");
             }
-
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
