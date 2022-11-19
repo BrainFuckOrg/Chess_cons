@@ -49,6 +49,8 @@ public static class Rendering
                 Console.ForegroundColor = Chess.MainClass.WhiteFigures.Contains(FieldNameSpace.Field.SingleField.Table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
+
+            Console.BackgroundColor = _background;
             Console.WriteLine();
         }
 
