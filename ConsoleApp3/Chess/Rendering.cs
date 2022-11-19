@@ -39,7 +39,8 @@ public static class Rendering
         Console.WriteLine("  a b c d e f g h");
         for (int i = 7; i >= 0; i--)
         {
-            Console.BackgroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write((i+1)+" ");
             for (int j = 0; j < 8; j++)
             {
