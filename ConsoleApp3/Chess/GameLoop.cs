@@ -19,7 +19,7 @@ public static class GameLoop
             string code = Console.ReadLine();
             if (code.Length == 5&&CheckString(code))
             {
-                bool b = Figure.Knight.CheckAndMove(
+                bool b = Figure.Pawn.CheckAndMove(
                     new SByte[]
                     {
                         (SByte)Array.IndexOf(_allowednumbers, code[1]), (SByte)Array.IndexOf(_allowedletters, code[0])
