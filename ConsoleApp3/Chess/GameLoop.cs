@@ -19,13 +19,31 @@ public static class GameLoop
             string code = Console.ReadLine();
             if (code.Length == 5&&CheckString(code))
             {
-                
+                bool b = Figure.Knight.CheckAndMove(
+                    new SByte[]
+                    {
+                        (SByte)Array.IndexOf(_allowednumbers, code[2]), (SByte)Array.IndexOf(_allowedletters, code[1])
+                    },
+                    new sbyte[]
+                    {
+                        (SByte)Array.IndexOf(_allowednumbers, code[5]), (SByte)Array.IndexOf(_allowedletters, code[4])
+                    });
+                if (!b)
+                {
+                    Console.WriteLine("Invalid move, try again");
+                    goto goto1;
+                }
             }
             else if(code.Length==6&&CheckString(code.Substring(1,5)))
             {
                 bool b = code[0] switch
                 {
-                    'N' => Figure.Knight.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])})
+                    'N' => Figure.Knight.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    'B' => Figure.Bishop.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    'R' => Figure.Rock.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    'K' => Figure.King.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    'Q' => Figure.Queen.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    _=>false
                 };
                 if (!b)
                 {
