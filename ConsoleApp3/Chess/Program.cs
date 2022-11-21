@@ -4,13 +4,13 @@ namespace Chess
 {
     public static class MainClass
     {
-        public static Figures[] WhiteFigures { get; private set; }
-        public static Figures[] BlackFigures { get; private set; }
+        public static FigureNames[] WhiteFigures { get; private set; }
+        public static FigureNames[] BlackFigures { get; private set; }
 
         static MainClass()
         {
-            WhiteFigures=new []{ Figures.BishopW, Figures.KingW, Figures.KnightW, Figures.PawnW, Figures.QueenW, Figures.RockW };
-            BlackFigures=new []{ Figures.BishopB, Figures.KingB, Figures.KnightB, Figures.PawnB, Figures.QueenB, Figures.RockB };
+            WhiteFigures=new []{ FigureNames.BishopW, FigureNames.KingW, FigureNames.KnightW, FigureNames.PawnW, FigureNames.QueenW, FigureNames.RockW };
+            BlackFigures=new []{ FigureNames.BishopB, FigureNames.KingB, FigureNames.KnightB, FigureNames.PawnB, FigureNames.QueenB, FigureNames.RockB };
         }
         public static void Main()
         {

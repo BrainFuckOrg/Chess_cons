@@ -1,6 +1,6 @@
 namespace FiguresNameSpace;
 
-public enum Figures
+public enum FigureNames
 {
     Empty,
     PawnW,
@@ -15,4 +15,9 @@ public enum Figures
     RockB,
     KingB,
     QueenB
+}
+
+public static class 
+{
+    
 }

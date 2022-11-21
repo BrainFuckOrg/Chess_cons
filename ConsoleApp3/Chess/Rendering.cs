@@ -4,7 +4,7 @@ namespace RenderingNameSpace;
 
 public static class Rendering
 {
-    private static Dictionary<Figures, Char> _figureRender = new Dictionary<Figures, Char>();
+    private static Dictionary<FigureNames, Char> _figureRender = new Dictionary<FigureNames, Char>();
     private static ConsoleColor _background = Console.ForegroundColor;
     private static ConsoleColor _foreground = Console.ForegroundColor;
     static Rendering()
@@ -20,19 +20,19 @@ public static class Rendering
         _figureRender.Add(Figures.RockW, '♖');
         _figureRender.Add(Figures.KingW, '♔');
         _figureRender.Add(Figures.QueenW, '♕');*/
-        _figureRender.Add(Figures.PawnW, '♟');
-        _figureRender.Add(Figures.BishopW, '♝');
-        _figureRender.Add(Figures.KnightW, '♞');
-        _figureRender.Add(Figures.RockW, '♜');
-        _figureRender.Add(Figures.KingW, '♚');
-        _figureRender.Add(Figures.QueenW, '♛');
-        _figureRender.Add(Figures.PawnB, '♟');
-        _figureRender.Add(Figures.BishopB, '♝');
-        _figureRender.Add(Figures.KnightB, '♞');
-        _figureRender.Add(Figures.RockB, '♜');
-        _figureRender.Add(Figures.KingB, '♚');
-        _figureRender.Add(Figures.QueenB, '♛');
-        _figureRender.Add(Figures.Empty, ' ');
+        _figureRender.Add(FigureNames.PawnW, '♟');
+        _figureRender.Add(FigureNames.BishopW, '♝');
+        _figureRender.Add(FigureNames.KnightW, '♞');
+        _figureRender.Add(FigureNames.RockW, '♜');
+        _figureRender.Add(FigureNames.KingW, '♚');
+        _figureRender.Add(FigureNames.QueenW, '♛');
+        _figureRender.Add(FigureNames.PawnB, '♟');
+        _figureRender.Add(FigureNames.BishopB, '♝');
+        _figureRender.Add(FigureNames.KnightB, '♞');
+        _figureRender.Add(FigureNames.RockB, '♜');
+        _figureRender.Add(FigureNames.KingB, '♚');
+        _figureRender.Add(FigureNames.QueenB, '♛');
+        _figureRender.Add(FigureNames.Empty, ' ');
     }
 
     public static void ShowField()
