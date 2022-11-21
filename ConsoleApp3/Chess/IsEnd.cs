@@ -2,5 +2,8 @@ namespace IsEndNameSpace;
 
 public static class IsEnd
 {
-    public static int a;
+    public static bool End()
+    {
+        return true;
+    }
 }

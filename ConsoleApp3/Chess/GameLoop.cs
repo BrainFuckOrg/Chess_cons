@@ -1,3 +1,5 @@
+using IsEndNameSpace;
+
 namespace GameLoopNameSpace;
 
 public static class GameLoop
@@ -7,7 +9,8 @@ public static class GameLoop
         while (true)
         {
             RenderingNameSpace.Rendering.ShowField();
-            break;
+            if(IsEndNameSpace.IsEnd.End())break;
+            
         }
     }
 }

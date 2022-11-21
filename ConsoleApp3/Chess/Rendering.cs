@@ -56,6 +56,6 @@ public static class Rendering
 
         Console.ForegroundColor = _foreground;
         Console.BackgroundColor = _background;
+        
     }
-    
 }
