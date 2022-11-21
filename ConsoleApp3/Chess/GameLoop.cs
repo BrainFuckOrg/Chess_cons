@@ -22,11 +22,11 @@ public static class GameLoop
                 bool b = Figure.Knight.CheckAndMove(
                     new SByte[]
                     {
-                        (SByte)Array.IndexOf(_allowednumbers, code[2]), (SByte)Array.IndexOf(_allowedletters, code[1])
+                        (SByte)Array.IndexOf(_allowednumbers, code[1]), (SByte)Array.IndexOf(_allowedletters, code[0])
                     },
                     new sbyte[]
                     {
-                        (SByte)Array.IndexOf(_allowednumbers, code[5]), (SByte)Array.IndexOf(_allowedletters, code[4])
+                        (SByte)Array.IndexOf(_allowednumbers, code[4]), (SByte)Array.IndexOf(_allowedletters, code[3])
                     });
                 if (!b)
                 {
