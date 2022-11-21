@@ -46,7 +46,7 @@ public static class Rendering
             for (int j = 0; j < 8; j++)
             {
                 Console.BackgroundColor = (i + j) % 2 == 0 ? ConsoleColor.DarkGray : ConsoleColor.Gray;
-                Console.ForegroundColor = Chess.MainClass.WhiteFigures.Contains(FieldNameSpace.Field.SingleField.Table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
+                Console.ForegroundColor = FiguresNameSpace.Figure.WhiteFigures.Contains(FieldNameSpace.Field.SingleField.Table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
 
