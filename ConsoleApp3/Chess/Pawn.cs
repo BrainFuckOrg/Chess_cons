@@ -12,11 +12,11 @@ public static class Pawn
         Table[from[0], from[1]] = FigureNames.Empty;
         if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
         {
-            Table[to[0], to[1]] = FigureNames.KingB;
+            Table[to[0], to[1]] = FigureNames.PawnB;
         }
         else
         {
-            Table[to[0], to[1]] = FigureNames.KingW;
+            Table[to[0], to[1]] = FigureNames.PawnW;
         }
         return true;
     }
