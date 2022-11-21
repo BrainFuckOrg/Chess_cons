@@ -11,11 +11,11 @@ public static class Bishop
         Table[from[0], from[1]] = FigureNames.Empty;
         if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
         {
-            Table[to[0], to[1]] = FigureNames.KingB;
+            Table[to[0], to[1]] = FigureNames.BishopB;
         }
         else
         {
-            Table[to[0], to[1]] = FigureNames.KingW;
+            Table[to[0], to[1]] = FigureNames.BishopW;
         }
         return true;
     }
