@@ -10,7 +10,18 @@ public static class Rock
     {
         if (!isThisFigureMove(from, to)) return false;
         if (HasAnotherThisColorFigure(from, to)) return false;
-        return !HasAnotherFigureInMoveLine(from, to);
+        if (HasAnotherFigureInMoveLine(from, to)) return false;
+        FigureNames[,] Table = Field.SingleField.Table;
+        Table[from[0], from[1]] = FigureNames.Empty;
+        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
+        {
+            Table[to[0], to[1]] = FigureNames.RockB;
+        }
+        else
+        {
+            Table[to[0], to[1]] = FigureNames.RockW;
+        }
+        return true;
     }
 
     private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
