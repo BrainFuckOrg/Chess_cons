@@ -15,11 +15,11 @@ public static class Rock
         Table[from[0], from[1]] = FigureNames.Empty;
         if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
         {
-            Table[to[0], to[1]] = FigureNames.RockB;
+            Table[to[0], to[1]] = FigureNames.RookB;
         }
         else
         {
-            Table[to[0], to[1]] = FigureNames.RockW;
+            Table[to[0], to[1]] = FigureNames.RookW;
         }
         return true;
     }

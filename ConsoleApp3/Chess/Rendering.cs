@@ -23,13 +23,13 @@ public static class Rendering
         _figureRender.Add(FigureNames.PawnW, '♟');
         _figureRender.Add(FigureNames.BishopW, '♝');
         _figureRender.Add(FigureNames.KnightW, '♞');
-        _figureRender.Add(FigureNames.RockW, '♜');
+        _figureRender.Add(FigureNames.RookW, '♜');
         _figureRender.Add(FigureNames.KingW, '♚');
         _figureRender.Add(FigureNames.QueenW, '♛');
         _figureRender.Add(FigureNames.PawnB, '♟');
         _figureRender.Add(FigureNames.BishopB, '♝');
         _figureRender.Add(FigureNames.KnightB, '♞');
-        _figureRender.Add(FigureNames.RockB, '♜');
+        _figureRender.Add(FigureNames.RookB, '♜');
         _figureRender.Add(FigureNames.KingB, '♚');
         _figureRender.Add(FigureNames.QueenB, '♛');
         _figureRender.Add(FigureNames.Empty, ' ');

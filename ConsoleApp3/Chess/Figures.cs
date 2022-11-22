@@ -6,19 +6,19 @@ public enum FigureNames
     PawnW,
     BishopW,
     KnightW,
-    RockW,
+    RookW,
     KingW,
     QueenW,
     PawnB,
     BishopB,
     KnightB,
-    RockB,
+    RookB,
     KingB,
     QueenB
 }
 
 public static class Figure
 {
-    public static readonly FigureNames[] WhiteFigures = { FigureNames.BishopW, FigureNames.KingW, FigureNames.KnightW, FigureNames.PawnW, FigureNames.QueenW, FigureNames.RockW };
-    public static readonly FigureNames[] BlackFigures = { FigureNames.BishopB, FigureNames.KingB, FigureNames.KnightB, FigureNames.PawnB, FigureNames.QueenB, FigureNames.RockB };
+    public static readonly FigureNames[] WhiteFigures = { FigureNames.BishopW, FigureNames.KingW, FigureNames.KnightW, FigureNames.PawnW, FigureNames.QueenW, FigureNames.RookW };
+    public static readonly FigureNames[] BlackFigures = { FigureNames.BishopB, FigureNames.KingB, FigureNames.KnightB, FigureNames.PawnB, FigureNames.QueenB, FigureNames.RookB };
 }
