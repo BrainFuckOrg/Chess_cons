@@ -1,3 +1,4 @@
+using ConsoleApp3;
 using FiguresNameSpace;
 
 namespace Figure;
@@ -10,16 +11,7 @@ public static class Knight
     {
         if (!isThisFigureMove(from, to)) return false;
         if (HasAnotherThisColorFigure(from, to)) return false;
-        FigureNames[,] Table = Field.SingleField.Table;
-        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
-        {
-            Table[to[0], to[1]] = FigureNames.KnightB;
-        }
-        else
-        {
-            Table[to[0], to[1]] = FigureNames.KnightW;
-        }
-        Table[from[0], from[1]] = FigureNames.Empty;
+        GeneralFigureMethods.MoveFigureFromTo(from,to);
 
         return true;
     }

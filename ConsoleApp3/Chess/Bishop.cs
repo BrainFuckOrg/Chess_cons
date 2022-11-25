@@ -1,3 +1,5 @@
+using ArraySumNameSpace;
+using ConsoleApp3;
 using FieldNameSpace;
 using FiguresNameSpace;
 
@@ -7,17 +9,16 @@ public static class Bishop
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
-        FigureNames[,] Table = Field.SingleField.Table;
-        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
-        {
-            Table[to[0], to[1]] = FigureNames.BishopB;
-        }
-        else
-        {
-            Table[to[0], to[1]] = FigureNames.BishopW;
-        }
-        Table[from[0], from[1]] = FigureNames.Empty;
 
+        GeneralFigureMethods.MoveFigureFromTo(from,to);
         return true;
     }
+    
+    private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
+    {
+        SByte[] CheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };
+        return Math.Abs(CheckCoors[0]) == Math.Abs(CheckCoors[1]);
+    }
+
+    
 }
