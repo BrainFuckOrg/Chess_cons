@@ -14,8 +14,8 @@ public static class King
     }
 
     private static Boolean isThisFigureMove(sbyte[] from, sbyte[] to)
-    {
-        return true;
-        
+    {        
+        SByte[] CheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };
+        return (CheckCoors[0]>=-1 && CheckCoors[0]<=1) && (CheckCoors[1]>=-1 && CheckCoors[1]<=1);
     }
 }
