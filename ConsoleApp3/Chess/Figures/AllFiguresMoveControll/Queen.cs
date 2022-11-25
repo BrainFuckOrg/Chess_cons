@@ -18,6 +18,8 @@ public static class Queen
 
     private static Boolean isThisFigureMove(sbyte[] from, sbyte[] to)
     {
-        return true;
+        //TODO Queen move
+        SByte[] CheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };
+        return Math.Abs(CheckCoors[0]) == Math.Abs(CheckCoors[1]);
     }
 }
