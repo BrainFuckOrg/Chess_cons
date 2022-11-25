@@ -12,7 +12,6 @@ public static class Rock
         if (HasAnotherThisColorFigure(from, to)) return false;
         if (HasAnotherFigureInMoveLine(from, to)) return false;
         FigureNames[,] Table = Field.SingleField.Table;
-        Table[from[0], from[1]] = FigureNames.Empty;
         if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0], from[1]]))
         {
             Table[to[0], to[1]] = FigureNames.RookB;
@@ -21,6 +20,8 @@ public static class Rock
         {
             Table[to[0], to[1]] = FigureNames.RookW;
         }
+        Table[from[0], from[1]] = FigureNames.Empty;
+
         return true;
     }
 
