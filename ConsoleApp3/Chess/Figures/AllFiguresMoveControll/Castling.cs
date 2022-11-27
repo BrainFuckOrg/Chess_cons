@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using FieldNameSpace;
 using FiguresNameSpace;
 
 namespace Figure;
@@ -7,8 +8,8 @@ namespace Figure;
 
 public static class Castling
 {
-    private static CastleType[] WhiteCastle = { CastleType.Short, CastleType.Long };
-    private static CastleType[] BlackCastle = { CastleType.Short, CastleType.Long };
+    private static List<CastleType> WhiteCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
+    private static List<CastleType> BlackCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
     private static SByte[] BlackKing = { 7, 4 };
     private static SByte[] WhiteKing = { 0, 4 };
     
@@ -81,5 +82,39 @@ public static class Castling
         GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 2 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 3 });
         return true;
+    }
+
+    public static void RookMove(SByte[] from)
+    {
+        switch (from[0])
+        {
+            case 7 when from[1] == 7:
+                BlackCastle.Remove(CastleType.Long);
+                break;
+            case 7 when from[1] == 0:
+                BlackCastle.Remove(CastleType.Short);
+                break;
+            case 0 when from[1] == 7:
+                WhiteCastle.Remove(CastleType.Short);
+                break;
+            case 0 when from[1] == 0:
+                WhiteCastle.Remove(CastleType.Long);
+                break;
+        }
+    }
+    
+    public static void KingMove(SByte[] from)
+    {
+        switch (from[0])
+        {
+            case 7 when from[1] == 4:
+                BlackCastle.Remove(CastleType.Short);
+                BlackCastle.Remove(CastleType.Long);
+                break;
+            case 0 when from[1] == 4:
+                WhiteCastle.Remove(CastleType.Short);
+                WhiteCastle.Remove(CastleType.Long);
+                break;
+        }
     }
 }

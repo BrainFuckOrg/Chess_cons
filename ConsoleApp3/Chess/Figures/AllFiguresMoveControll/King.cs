@@ -10,6 +10,7 @@ public static class King
         if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
+        Castling.KingMove(from);
         return true;
     }
 

@@ -10,7 +10,7 @@ public static class Rock
         if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-
+        Castling.RookMove(from);
         return true;
     }
 
