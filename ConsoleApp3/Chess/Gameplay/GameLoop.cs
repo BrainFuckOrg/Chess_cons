@@ -6,11 +6,12 @@ namespace GameLoopNameSpace;
 
 public static class GameLoop
 {
+    private static bool whiteMove = true;
     private static char[] _allowedletters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
     private static char[] _allowednumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
     public static void Loop()
     {
-        bool whiteMove = true;
+        //bool whiteMove = true;
         while (true)
         {
             int moveUp = 0;
@@ -106,7 +107,28 @@ public static class GameLoop
 
     public static FigureNames AskPawnTransformation()
     {
-        throw new NotImplementedException();//TODO finish
+        Console.WriteLine("transform pawn");
+        string code = Console.ReadLine();
+        if (whiteMove)
+        {
+            return code switch
+            {
+                "N" => FigureNames.KnightB,
+                "B" => FigureNames.BishopB,
+                "R" => FigureNames.RookB,
+                "Q" => FigureNames.QueenB
+            };
+        }
+        else
+        {
+            return code switch
+            {
+                "N" => FigureNames.KnightW,
+                "B" => FigureNames.BishopW,
+                "R" => FigureNames.RookW,
+                "Q" => FigureNames.QueenW
+            };
+        }
     }
     private static bool CheckString(string code)
     {
