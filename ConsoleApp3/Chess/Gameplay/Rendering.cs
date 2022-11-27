@@ -32,11 +32,12 @@ public static class Rendering
         _figureRender.Add(FigureNames.Empty, ' ');
     }
 
-    public static void ShowField()
+    public static void ShowField(int moveUp=0)
     {
         ClearConsole();
         Console.WriteLine("  a b c d e f g h           w       b");
-        int position = WhiteMoves.Count < 8 ? 0 : WhiteMoves.Count - 8;
+        int position = WhiteMoves.Count - 8-moveUp;
+        if (position < 0) position = 0;
         for (int i = 7; i >= 0; i--)
         {
             Console.ResetColor();
@@ -49,6 +50,7 @@ public static class Rendering
             }
             Console.ResetColor();
             if(WhiteMoves.Count>8&&i==7)Console.Write("           ...");
+            else if(WhiteMoves.Count>8&&i==0&&position!=WhiteMoves.Count-1)Console.Write("           ...");
             else{
                 if (position < WhiteMoves.Count) Console.Write("  {0,4} {1,6}", position + 1, WhiteMoves[position]);
                 if (position < BlackMoves.Count) Console.Write("  {0,6}", BlackMoves[position]);

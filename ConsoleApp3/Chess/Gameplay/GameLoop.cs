@@ -13,13 +13,25 @@ public static class GameLoop
         bool whiteMove = true;
         while (true)
         {
+            int moveUp = 0;
             RenderingNameSpace.Rendering.ShowField();
             if(IsEndNameSpace.IsEnd.End())break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
             whiteMove = !whiteMove;
             goto1:
             string code = Console.ReadLine();
-            if (code == "0-0")
+            if (code.Substring(0, 2) == "up")
+            {
+                moveUp += Convert.ToInt32(code.Substring(3));
+                goto goto1;
+            }
+            else if (code.Substring(0, 4) == "down")
+            {
+                moveUp -= Convert.ToInt32(code.Substring(5));
+                if (moveUp < 0) moveUp = 0;
+                goto goto1;
+            }
+            else if (code == "0-0")
             {
                 if (!Castling.CheckAndMove(CastleType.Short, whiteMove ? Side.Black: Side.White))
                 {
@@ -92,6 +104,10 @@ public static class GameLoop
         }
     }
 
+    public static FigureNames AskPawnTransformation()
+    {
+        throw new NotImplementedException();//TODO finish
+    }
     private static bool CheckString(string code)
     {
         return _allowedletters.Contains(code[0]) && _allowednumbers.Contains(code[1]) && code[2] == '-' &&
