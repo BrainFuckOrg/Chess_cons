@@ -32,7 +32,7 @@ public static class Rendering
         _figureRender.Add(FigureNames.Empty, ' ');
     }
 
-    public static void ShowField(int moveUp=0)
+    public static void ShowField(int moveUp=0)//TODO pawn transformation in journal
     {
         ClearConsole();
         Console.WriteLine("  a b c d e f g h           w       b");
