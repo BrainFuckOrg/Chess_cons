@@ -34,20 +34,20 @@ public static class Castling
         };
     }
 
-    private static Boolean BlackCastleMoveLong()
+    private static Boolean BlackCastleMoveShort()
     {
         SByte[] rookPos = { 7, 7 };
-        if (!BlackCastle.Contains(CastleType.Long)) return false;
+        if (!BlackCastle.Contains(CastleType.Short)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 6 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 5 });
         return true;
     }
 
-    private static Boolean BlackCastleMoveShort()
+    private static Boolean BlackCastleMoveLong()
     {        
         SByte[] rookPos = { 7, 0 };
-        if (!BlackCastle.Contains(CastleType.Short)) return false;
+        if (!BlackCastle.Contains(CastleType.Long)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 2 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 3 });
@@ -64,23 +64,23 @@ public static class Castling
         };
     }
 
-    private static Boolean WhiteCastleMoveLong()
+    private static Boolean WhiteCastleMoveShort()
     {        
         SByte[] rookPos = { 0, 7 };
-        if (!WhiteCastle.Contains(CastleType.Long)) return false;
+        if (!WhiteCastle.Contains(CastleType.Short)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(WhiteKing, new SByte[] { 0, 6 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 0, 5 });
         return true;
     }
 
-    private static Boolean WhiteCastleMoveShort()
+    private static Boolean WhiteCastleMoveLong()
     {        
-        SByte[] rookPos = { 7, 0 };
-        if (!WhiteCastle.Contains(CastleType.Short)) return false;
-        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
-        GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 2 });
-        GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 3 });
+        SByte[] rookPos = { 0, 0 };
+        if (!WhiteCastle.Contains(CastleType.Long)) return false;
+        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
+        GeneralFigureMethods.MoveFigureFromTo(WhiteKing, new SByte[] { 0, 2 });
+        GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 0, 3 });
         return true;
     }
 
