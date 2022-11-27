@@ -1,6 +1,4 @@
 using ConsoleApp3;
-using FieldNameSpace;
-using FiguresNameSpace;
 
 namespace Figure;
 
