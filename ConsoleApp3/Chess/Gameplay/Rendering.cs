@@ -1,25 +1,22 @@
 using FiguresNameSpace;
+using System.Collections.Generic;
 
 namespace RenderingNameSpace;
 
 public static class Rendering
 {
+    public static List<string> WhiteMoves { get; set; }
+    public static List<string> BlackMoves { get; set; }
     private static Dictionary<FigureNames, Char> _figureRender = new Dictionary<FigureNames, Char>();
-    //private static ConsoleColor _background = Console.ForegroundColor;
-    //private static ConsoleColor _foreground = Console.ForegroundColor;
     static Rendering()
     {
         SetFigureRendering();
+        WhiteMoves = new List<string>();
+        BlackMoves = new List<string>();
     }
 
     private static void SetFigureRendering()
     {
-        /*_figureRender.Add(Figures.PawnW, '♙');
-        _figureRender.Add(Figures.BishopW, '♗');
-        _figureRender.Add(Figures.KnightW, '♘');
-        _figureRender.Add(Figures.RockW, '♖');
-        _figureRender.Add(Figures.KingW, '♔');
-        _figureRender.Add(Figures.QueenW, '♕');*/
         _figureRender.Add(FigureNames.PawnW, '♟');
         _figureRender.Add(FigureNames.BishopW, '♝');
         _figureRender.Add(FigureNames.KnightW, '♞');
@@ -37,11 +34,11 @@ public static class Rendering
 
     public static void ShowField()
     {
-        Console.WriteLine("  a b c d e f g h");
+        ClearConsole();
+        Console.WriteLine("  a b c d e f g h           w       b");
+        int position = WhiteMoves.Count < 8 ? 0 : WhiteMoves.Count - 8;
         for (int i = 7; i >= 0; i--)
         {
-            //Console.BackgroundColor = _background;
-            //Console.ForegroundColor = _foreground;
             Console.ResetColor();
             Console.Write((i+1)+" ");
             for (int j = 0; j < 8; j++)
@@ -50,14 +47,24 @@ public static class Rendering
                 Console.ForegroundColor = FiguresNameSpace.Figure.WhiteFigures.Contains(FieldNameSpace.Field.SingleField.Table[i,j]) ? ConsoleColor.White : ConsoleColor.Black;
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
-
-            //Console.BackgroundColor = _background;
             Console.ResetColor();
+            if(WhiteMoves.Count>8&&i==7)Console.Write("           ...");
+            else{
+                if (position < WhiteMoves.Count) Console.Write("  {0,4} {1,6}", position + 1, WhiteMoves[position]);
+                if (position < BlackMoves.Count) Console.Write("  {0,6}", BlackMoves[position]);
+            }
+            position++;
             Console.WriteLine();
         }
+    }
 
-        //Console.ForegroundColor = _foreground;
-        //Console.BackgroundColor = _background;
-        
+    private static void ClearConsole()
+    {
+        Console.SetCursorPosition(0,0);
+        for (int i = 0; i < Console.WindowHeight; i++)
+        {
+            Console.WriteLine(new String(' ',Console.WindowWidth));
+        }
+        Console.SetCursorPosition(0,0);
     }
 }

@@ -1,3 +1,4 @@
+using Figure;
 using FiguresNameSpace;
 using IsEndNameSpace;
 
@@ -18,7 +19,24 @@ public static class GameLoop
             whiteMove = !whiteMove;
             goto1:
             string code = Console.ReadLine();
-            if (code.Length == 5&&CheckString(code)&&(whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnW))
+            if (code == "0-0")
+            {
+                if (!Castling.CheckAndMove(CastleType.Short, whiteMove ? Side.Black: Side.White))
+                {
+                    Console.WriteLine("Short castling impossible");
+                    goto goto1;
+                }else if (whiteMove) RenderingNameSpace.Rendering.BlackMoves.Add("0-0");
+                else RenderingNameSpace.Rendering.WhiteMoves.Add("0-0");
+            }else if (code == "0-0-0")
+            {
+                if (!Castling.CheckAndMove(CastleType.Long, whiteMove ? Side.Black: Side.White))
+                {
+                    Console.WriteLine("Long castling impossible");
+                    goto goto1;
+                }else if (whiteMove) RenderingNameSpace.Rendering.BlackMoves.Add("0-0-0");
+                else RenderingNameSpace.Rendering.WhiteMoves.Add("0-0-0");
+            }
+            else if (code.Length == 5&&CheckString(code)&&(whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnW))
             {
                 bool b = Figure.Pawn.CheckAndMove(
                     new SByte[]
@@ -33,6 +51,13 @@ public static class GameLoop
                 {
                     Console.WriteLine("Invalid move, try again");
                     goto goto1;
+                }else if (whiteMove)
+                {
+                    RenderingNameSpace.Rendering.BlackMoves.Add(code);
+                }
+                else
+                {
+                    RenderingNameSpace.Rendering.WhiteMoves.Add(code);
                 }
             }
             else if(code.Length==6&&CheckString(code.Substring(1,5)))
@@ -50,6 +75,13 @@ public static class GameLoop
                 {
                     Console.WriteLine("Invalid move, try again");
                     goto goto1;
+                }else if (whiteMove)
+                {
+                    RenderingNameSpace.Rendering.BlackMoves.Add(code);
+                }
+                else
+                {
+                    RenderingNameSpace.Rendering.WhiteMoves.Add(code);
                 }
             }
             else
