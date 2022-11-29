@@ -29,10 +29,10 @@ public static class Rendering
         _figureRender.Add(FigureNames.Empty, ' ');
     }
 
-    public static void ShowField(int moveUp=0)//TODO pawn transformation in journal
+    public static void ShowField(int moveUp=0)
     {
         ClearConsole();
-        Console.WriteLine("  a b c d e f g h           w       b");
+        Console.WriteLine("  a b c d e f g h             w         b");
         int position = JournalNamespace.Journal.WhiteMoves.Count - 8-moveUp;
         if (position < 0) position = 0;
         for (int i = 7; i >= 0; i--)
@@ -49,8 +49,8 @@ public static class Rendering
             if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==7)Console.Write("           ...");
             else if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==0&&position!=JournalNamespace.Journal.WhiteMoves.Count-1)Console.Write("           ...");
             else{
-                if (position < JournalNamespace.Journal.WhiteMoves.Count) Console.Write("  {0,4} {1,6}", position + 1, JournalNamespace.Journal.WhiteMoves[position]);
-                if (position < JournalNamespace.Journal.BlackMoves.Count) Console.Write("  {0,6}", JournalNamespace.Journal.BlackMoves[position]);
+                if (position < JournalNamespace.Journal.WhiteMoves.Count) Console.Write("  {0,4} {1,8}", position + 1, JournalNamespace.Journal.WhiteMoves[position]);
+                if (position < JournalNamespace.Journal.BlackMoves.Count) Console.Write("  {0,8}", JournalNamespace.Journal.BlackMoves[position]);
             }
             position++;
             Console.WriteLine();
