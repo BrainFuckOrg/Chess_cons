@@ -26,7 +26,7 @@ public static class GameLoop
                 moveUp += Convert.ToInt32(code.Substring(3));
                 goto goto1;
             }
-            else if (code.Substring(0, 4) == "down")
+            else if (code.Length>5&&code.Substring(0, 4) == "down")
             {
                 moveUp -= Convert.ToInt32(code.Substring(5));
                 if (moveUp < 0) moveUp = 0;
