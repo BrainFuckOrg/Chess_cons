@@ -53,7 +53,7 @@ public static class Rendering
                 if (position < JournalNamespace.Journal.BlackMoves.Count) Console.Write("  {0,8}", JournalNamespace.Journal.BlackMoves[position]);
             }
             position++;
-            Console.WriteLine();
+            Console.Write("\n");
         }
     }
 

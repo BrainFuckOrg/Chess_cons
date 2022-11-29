@@ -111,7 +111,7 @@ public static class GameLoop
         string code = Console.ReadLine();
         if (whiteMove)
         {
-            JournalNamespace.Journal.BlackMoves[^0]+="("+code+")";
+            JournalNamespace.Journal.BlackMoves[JournalNamespace.Journal.BlackMoves.Count-1]+="("+code+")";
             return code switch
             {
                 "N" => FigureNames.KnightB,
@@ -122,7 +122,7 @@ public static class GameLoop
         }
         else
         {
-            JournalNamespace.Journal.WhiteMoves[^0]+="("+code+")";
+            JournalNamespace.Journal.WhiteMoves[JournalNamespace.Journal.WhiteMoves.Count-1]+="("+code+")";
             return code switch
             {
                 "N" => FigureNames.KnightW,
