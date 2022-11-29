@@ -1,4 +1,4 @@
-1
+1 (Simple test)
 ___________
 e2-e4
 e7-e5
@@ -9,6 +9,72 @@ Ng8-f6
 0-0
 Bf8-c5
 Rf1-e1
+0-0
+
+___________
+2 (Test rook move W)
+___________
+e2-e4
+e7-e5
+Ng1-f3
+Nb8-c6
+Bf1-c4
+Ng8-f6
+Rh1-g1
+Nf6-g8
+Rg1-h1
+Ng8-f6
+0-0
+
+___________
+3 (Test rook move B)
+___________
+e2-e4
+e7-e5
+Ng1-f3
+Nb8-c6
+Bf1-c4
+Ng8-f6
+0-0
+Bf8-c5
+a2-a3
+Rh8-f8
+Rf1-e1
+Rf8-h8
+Re1-f1
+0-0
+
+___________
+4 (Test king move W)
+___________
+e2-e4
+e7-e5
+Ng1-f3
+Nb8-c6
+Bf1-c4
+Ng8-f6
+Ke1-e2
+Nf6-g8
+Ke2-e1
+Ng8-f6
+0-0
+
+___________
+5 (Test king move B)
+___________
+e2-e4
+e7-e5
+Ng1-f3
+Nb8-c6
+Bf1-c4
+Ng8-f6
+0-0
+Bf8-c5
+a2-a3
+Ke8-e7
+Rf1-e1
+Ke7-e8
+Re1-f1
 0-0
 
 ___________
