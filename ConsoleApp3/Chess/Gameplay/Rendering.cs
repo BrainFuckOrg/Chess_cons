@@ -5,14 +5,11 @@ namespace RenderingNameSpace;
 
 public static class Rendering
 {
-    public static List<string> WhiteMoves { get; set; }
-    public static List<string> BlackMoves { get; set; }
+    
     private static Dictionary<FigureNames, Char> _figureRender = new Dictionary<FigureNames, Char>();
     static Rendering()
     {
         SetFigureRendering();
-        WhiteMoves = new List<string>();
-        BlackMoves = new List<string>();
     }
 
     private static void SetFigureRendering()
@@ -36,7 +33,7 @@ public static class Rendering
     {
         ClearConsole();
         Console.WriteLine("  a b c d e f g h           w       b");
-        int position = WhiteMoves.Count - 8-moveUp;
+        int position = JournalNamespace.Journal.WhiteMoves.Count - 8-moveUp;
         if (position < 0) position = 0;
         for (int i = 7; i >= 0; i--)
         {
@@ -49,11 +46,11 @@ public static class Rendering
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
             Console.ResetColor();
-            if(WhiteMoves.Count>8&&i==7)Console.Write("           ...");
-            else if(WhiteMoves.Count>8&&i==0&&position!=WhiteMoves.Count-1)Console.Write("           ...");
+            if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==7)Console.Write("           ...");
+            else if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==0&&position!=JournalNamespace.Journal.WhiteMoves.Count-1)Console.Write("           ...");
             else{
-                if (position < WhiteMoves.Count) Console.Write("  {0,4} {1,6}", position + 1, WhiteMoves[position]);
-                if (position < BlackMoves.Count) Console.Write("  {0,6}", BlackMoves[position]);
+                if (position < JournalNamespace.Journal.WhiteMoves.Count) Console.Write("  {0,4} {1,6}", position + 1, JournalNamespace.Journal.WhiteMoves[position]);
+                if (position < JournalNamespace.Journal.BlackMoves.Count) Console.Write("  {0,6}", JournalNamespace.Journal.BlackMoves[position]);
             }
             position++;
             Console.WriteLine();

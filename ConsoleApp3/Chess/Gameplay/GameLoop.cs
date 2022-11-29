@@ -7,15 +7,15 @@ namespace GameLoopNameSpace;
 public static class GameLoop
 {
     private static bool whiteMove = true;
-    private static char[] _allowedletters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-    private static char[] _allowednumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
+    public static char[] AllowedLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+    public static char[] AllowedNumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
     public static void Loop()
     {
         //bool whiteMove = true;
         while (true)
         {
             int moveUp = 0;
-            RenderingNameSpace.Rendering.ShowField();
+            RenderingNameSpace.Rendering.ShowField(moveUp);
             if(IsEndNameSpace.IsEnd.End())break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
             whiteMove = !whiteMove;
@@ -38,27 +38,27 @@ public static class GameLoop
                 {
                     Console.WriteLine("Short castling impossible");
                     goto goto1;
-                }else if (whiteMove) RenderingNameSpace.Rendering.BlackMoves.Add("0-0");
-                else RenderingNameSpace.Rendering.WhiteMoves.Add("0-0");
+                }else if (whiteMove) JournalNamespace.Journal.BlackMoves.Add("0-0");
+                else JournalNamespace.Journal.WhiteMoves.Add("0-0");
             }else if (code == "0-0-0")
             {
                 if (!Castling.CheckAndMove(CastleType.Long, whiteMove ? Side.Black: Side.White))
                 {
                     Console.WriteLine("Long castling impossible");
                     goto goto1;
-                }else if (whiteMove) RenderingNameSpace.Rendering.BlackMoves.Add("0-0-0");
-                else RenderingNameSpace.Rendering.WhiteMoves.Add("0-0-0");
+                }else if (whiteMove) JournalNamespace.Journal.BlackMoves.Add("0-0-0");
+                else JournalNamespace.Journal.WhiteMoves.Add("0-0-0");
             }
-            else if (code.Length == 5&&CheckString(code)&&(whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[1]),Array.IndexOf(_allowedletters,code[0])]==FigureNames.PawnW))
+            else if (code.Length == 5&&CheckString(code)&&(whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[1]),Array.IndexOf(AllowedLetters,code[0])]==FigureNames.PawnB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[1]),Array.IndexOf(AllowedLetters,code[0])]==FigureNames.PawnW))
             {
                 bool b = Figure.Pawn.CheckAndMove(
                     new SByte[]
                     {
-                        (SByte)Array.IndexOf(_allowednumbers, code[1]), (SByte)Array.IndexOf(_allowedletters, code[0])
+                        (SByte)Array.IndexOf(AllowedNumbers, code[1]), (SByte)Array.IndexOf(AllowedLetters, code[0])
                     },
                     new sbyte[]
                     {
-                        (SByte)Array.IndexOf(_allowednumbers, code[4]), (SByte)Array.IndexOf(_allowedletters, code[3])
+                        (SByte)Array.IndexOf(AllowedNumbers, code[4]), (SByte)Array.IndexOf(AllowedLetters, code[3])
                     });
                 if (!b)
                 {
@@ -66,22 +66,22 @@ public static class GameLoop
                     goto goto1;
                 }else if (whiteMove)
                 {
-                    RenderingNameSpace.Rendering.BlackMoves.Add(code);
+                    JournalNamespace.Journal.BlackMoves.Add(code);
                 }
                 else
                 {
-                    RenderingNameSpace.Rendering.WhiteMoves.Add(code);
+                    JournalNamespace.Journal.WhiteMoves.Add(code);
                 }
             }
             else if(code.Length==6&&CheckString(code.Substring(1,5)))
             {
                 bool b = code[0] switch
                 {
-                    'N' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.KnightB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.KnightW)&&Figure.Knight.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
-                    'B' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.BishopB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.BishopW)&&Figure.Bishop.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
-                    'R' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.RookB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.RookW)&&Figure.Rock.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
-                    'K' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.KingB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.KingW)&&Figure.King.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
-                    'Q' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.QueenB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(_allowednumbers,code[2]),Array.IndexOf(_allowedletters,code[1])]==FigureNames.QueenW)&&Figure.Queen.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(_allowednumbers, code[2]),(SByte)Array.IndexOf(_allowedletters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(_allowednumbers,code[5]),(SByte)Array.IndexOf(_allowedletters,code[4])}),
+                    'N' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.KnightB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.KnightW)&&Figure.Knight.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(AllowedNumbers, code[2]),(SByte)Array.IndexOf(AllowedLetters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(AllowedNumbers,code[5]),(SByte)Array.IndexOf(AllowedLetters,code[4])}),
+                    'B' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.BishopB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.BishopW)&&Figure.Bishop.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(AllowedNumbers, code[2]),(SByte)Array.IndexOf(AllowedLetters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(AllowedNumbers,code[5]),(SByte)Array.IndexOf(AllowedLetters,code[4])}),
+                    'R' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.RookB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.RookW)&&Figure.Rock.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(AllowedNumbers, code[2]),(SByte)Array.IndexOf(AllowedLetters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(AllowedNumbers,code[5]),(SByte)Array.IndexOf(AllowedLetters,code[4])}),
+                    'K' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.KingB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.KingW)&&Figure.King.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(AllowedNumbers, code[2]),(SByte)Array.IndexOf(AllowedLetters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(AllowedNumbers,code[5]),(SByte)Array.IndexOf(AllowedLetters,code[4])}),
+                    'Q' => (whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.QueenB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[2]),Array.IndexOf(AllowedLetters,code[1])]==FigureNames.QueenW)&&Figure.Queen.CheckAndMove(new SByte[] { (SByte)Array.IndexOf(AllowedNumbers, code[2]),(SByte)Array.IndexOf(AllowedLetters,code[1]) },new sbyte[]{(SByte)Array.IndexOf(AllowedNumbers,code[5]),(SByte)Array.IndexOf(AllowedLetters,code[4])}),
                     _=>false
                 };
                 if (!b)
@@ -90,11 +90,11 @@ public static class GameLoop
                     goto goto1;
                 }else if (whiteMove)
                 {
-                    RenderingNameSpace.Rendering.BlackMoves.Add(code);
+                    JournalNamespace.Journal.BlackMoves.Add(code);
                 }
                 else
                 {
-                    RenderingNameSpace.Rendering.WhiteMoves.Add(code);
+                    JournalNamespace.Journal.WhiteMoves.Add(code);
                 }
             }
             else
@@ -132,7 +132,7 @@ public static class GameLoop
     }
     private static bool CheckString(string code)
     {
-        return _allowedletters.Contains(code[0]) && _allowednumbers.Contains(code[1]) && code[2] == '-' &&
-            _allowedletters.Contains(code[3]) && _allowednumbers.Contains(code[4]);
+        return AllowedLetters.Contains(code[0]) && AllowedNumbers.Contains(code[1]) && code[2] == '-' &&
+            AllowedLetters.Contains(code[3]) && AllowedNumbers.Contains(code[4]);
     }
 }
