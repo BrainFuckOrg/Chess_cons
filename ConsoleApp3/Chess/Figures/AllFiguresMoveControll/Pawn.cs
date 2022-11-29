@@ -7,7 +7,6 @@ namespace Figure;
 
 public static class Pawn
 {
-    //TODO pawn -> Queen
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
         if (!(isThisFigureMove(from, to) || isPawnTake(from, to))) return false;
