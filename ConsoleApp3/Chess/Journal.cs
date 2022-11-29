@@ -16,7 +16,7 @@ public static class Journal
 
     public static void GetLastMove(out FiguresNameSpace.FigureNames figure, out SByte[] startCoordinates, out SByte[] endCoordinates)
     {
-        string code=WhiteMoves.Count > BlackMoves.Count?WhiteMoves[^1]:BlackMoves[^1];
+        string code = WhiteMoves.Count > BlackMoves.Count ? WhiteMoves[^0] : BlackMoves[^0];
         if (code.Length == 5)
         {
             figure = WhiteMoves.Count > BlackMoves.Count?FiguresNameSpace.FigureNames.PawnW:FigureNames.PawnB;

@@ -9,6 +9,7 @@ public static class GameLoop
     private static bool whiteMove = true;
     public static char[] AllowedLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
     public static char[] AllowedNumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
+    private static string _transformHelper;
     public static void Loop()
     {
         //bool whiteMove = true;
@@ -51,6 +52,7 @@ public static class GameLoop
             }
             else if (code.Length == 5&&CheckString(code)&&(whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[1]),Array.IndexOf(AllowedLetters,code[0])]==FigureNames.PawnB||!whiteMove&&FieldNameSpace.Field.SingleField.Table[Array.IndexOf(AllowedNumbers,code[1]),Array.IndexOf(AllowedLetters,code[0])]==FigureNames.PawnW))
             {
+                _transformHelper = "";
                 bool b = Figure.Pawn.CheckAndMove(
                     new SByte[]
                     {
@@ -66,11 +68,11 @@ public static class GameLoop
                     goto goto1;
                 }else if (whiteMove)
                 {
-                    JournalNamespace.Journal.BlackMoves.Add(code);
+                    JournalNamespace.Journal.BlackMoves.Add(code+_transformHelper);
                 }
                 else
                 {
-                    JournalNamespace.Journal.WhiteMoves.Add(code);
+                    JournalNamespace.Journal.WhiteMoves.Add(code+_transformHelper);
                 }
             }
             else if(code.Length==6&&CheckString(code.Substring(1,5)))
@@ -109,9 +111,9 @@ public static class GameLoop
     {
         Console.WriteLine("transform pawn");
         string code = Console.ReadLine();
+        _transformHelper = "(" + code + ")";
         if (whiteMove)
         {
-            JournalNamespace.Journal.BlackMoves[JournalNamespace.Journal.BlackMoves.Count-1]+="("+code+")";
             return code switch
             {
                 "N" => FigureNames.KnightB,
@@ -122,7 +124,6 @@ public static class GameLoop
         }
         else
         {
-            JournalNamespace.Journal.WhiteMoves[JournalNamespace.Journal.WhiteMoves.Count-1]+="("+code+")";
             return code switch
             {
                 "N" => FigureNames.KnightW,
