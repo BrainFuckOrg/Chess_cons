@@ -1,6 +1,9 @@
 namespace FigureCanMoveTo;
 
-public class BishopCanMove
+public static class BishopCanMove
 {
-    
+    public static Boolean BishopCanMoveTo(SByte[] to)
+    {
+        return true;
+    }
 }

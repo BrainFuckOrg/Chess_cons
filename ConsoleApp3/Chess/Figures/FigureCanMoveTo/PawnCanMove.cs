@@ -1,6 +1,9 @@
 namespace FigureCanMoveTo;
 
-public class PawnCanMove
+public static class PawnCanMove
 {
-    
+    public static Boolean PawnCanMoveTo(SByte[] to)
+    {
+        return true;
+    }
 }
