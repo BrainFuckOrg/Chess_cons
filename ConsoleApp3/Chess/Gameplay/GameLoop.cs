@@ -12,10 +12,11 @@ public static class GameLoop
     private static string _transformHelper;
     public static void Loop()
     {
-        //bool whiteMove = true;
+        
+        int moveUp = 0;
         while (true)
         {
-            int moveUp = 0;
+            moveUp = 0;
             RenderingNameSpace.Rendering.ShowField(moveUp);
             if(IsEndNameSpace.IsEnd.End())break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
@@ -25,12 +26,16 @@ public static class GameLoop
             if (code.Substring(0, 2) == "up")
             {
                 moveUp += Convert.ToInt32(code.Substring(3));
+                RenderingNameSpace.Rendering.ShowField(moveUp);
+                Console.WriteLine(!whiteMove ? "White move:" : "Black move:");
                 goto goto1;
             }
             else if (code.Length>5&&code.Substring(0, 4) == "down")
             {
                 moveUp -= Convert.ToInt32(code.Substring(5));
                 if (moveUp < 0) moveUp = 0;
+                RenderingNameSpace.Rendering.ShowField(moveUp);
+                Console.WriteLine(!whiteMove ? "White move:" : "Black move:");
                 goto goto1;
             }
             else if (code == "0-0")

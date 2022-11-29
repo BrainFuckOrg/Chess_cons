@@ -46,7 +46,7 @@ public static class Rendering
                 Console.Write(_figureRender[FieldNameSpace.Field.SingleField.Table[i,j]]+" ");
             }
             Console.ResetColor();
-            if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==7)Console.Write("           ...");
+            if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==7&&position!=0)Console.Write("           ...");
             else if(JournalNamespace.Journal.WhiteMoves.Count>8&&i==0&&position!=JournalNamespace.Journal.WhiteMoves.Count-1)Console.Write("           ...");
             else{
                 if (position < JournalNamespace.Journal.WhiteMoves.Count) Console.Write("  {0,4} {1,8}", position + 1, JournalNamespace.Journal.WhiteMoves[position]);
