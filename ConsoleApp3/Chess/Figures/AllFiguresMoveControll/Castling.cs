@@ -89,10 +89,10 @@ public static class Castling
         switch (from[0])
         {
             case 7 when from[1] == 7:
-                BlackCastle.Remove(CastleType.Long);
+                BlackCastle.Remove(CastleType.Short);
                 break;
             case 7 when from[1] == 0:
-                BlackCastle.Remove(CastleType.Short);
+                BlackCastle.Remove(CastleType.Long);
                 break;
             case 0 when from[1] == 7:
                 WhiteCastle.Remove(CastleType.Short);
