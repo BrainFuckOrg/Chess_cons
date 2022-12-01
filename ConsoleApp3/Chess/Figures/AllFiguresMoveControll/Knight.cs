@@ -9,13 +9,17 @@ public static class Knight
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
-        if (!isThisFigureMove(from, to)) return false;
-        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
+        if (!KnightCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-
         return true;
     }
 
+    public static Boolean KnightCanMove(SByte[] from, SByte[] to)
+    {
+        if (!isThisFigureMove(from, to)) return false;
+        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
+        return true;
+    }
     private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
     {
         SByte[] CheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };

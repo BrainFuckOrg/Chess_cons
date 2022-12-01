@@ -10,6 +10,15 @@
 
     <ItemGroup>
       <Compile Remove="IFigureCanMove.cs" />
+      <Compile Remove="Figures\FigureCanMoveTo\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Figures\FigureCanMoveTo\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Figures\FigureCanMoveTo\**" />
     </ItemGroup>
 
 </Project>

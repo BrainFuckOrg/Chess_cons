@@ -6,16 +6,17 @@ public static class Bishop
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
-        if (!isThisFigureMove(from, to)) return false;
-        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
-        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
+        if (!BishopCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         return true;
     }
 
-    private static Boolean BishopCanMove()
+    public static Boolean BishopCanMove(SByte[] from, SByte[] to)
     {
-        throw new NotImplementedException();
+        if (!isThisFigureMove(from, to)) return false;
+        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
+        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
+        return true;
     }
     private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
     {
