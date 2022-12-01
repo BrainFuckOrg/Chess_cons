@@ -41,12 +41,13 @@ public static class CanHit
 {
     public static Boolean CanHitCell(SByte[] cell, Side color)
     {
+        bool result = false;
         for (SByte i = 0; i < 8; i++)
         for (SByte j = 0; j < 8; j++)
         {
             if (color == Side.White)
             {
-                return FieldNameSpace.Field.SingleField.Table[i, j] switch
+                result&= FieldNameSpace.Field.SingleField.Table[i, j] switch
                 {
                     FigureNames.BishopW => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightW => Knight.KnightCanMove(new[] { i, j }, cell),
@@ -58,7 +59,7 @@ public static class CanHit
             }
             else
             {
-                return FieldNameSpace.Field.SingleField.Table[i, j] switch
+                result&= FieldNameSpace.Field.SingleField.Table[i, j] switch
                 {
                     FigureNames.BishopB => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightB => Knight.KnightCanMove(new[] { i, j }, cell),
@@ -69,6 +70,7 @@ public static class CanHit
                 };
             }
         }
-        return false;
+
+        return result;
     }
 }
