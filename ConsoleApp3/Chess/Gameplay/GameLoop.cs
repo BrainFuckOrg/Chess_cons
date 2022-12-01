@@ -10,10 +10,13 @@ public static class GameLoop
     public static char[] AllowedLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
     public static char[] AllowedNumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
     private static string _transformHelper;
+
+    
     public static void Loop()
     {
         
         int moveUp = 0;
+        string gameEndMode = "";
         while (true)
         {
             moveUp = 0;
@@ -23,6 +26,11 @@ public static class GameLoop
             whiteMove = !whiteMove;
             goto1:
             string code = Console.ReadLine();
+            if (code == "draw")
+            {
+                gameEndMode = "draw";
+                break;
+            }
             if (code.Substring(0, 2) == "up")
             {
                 moveUp += Convert.ToInt32(code.Substring(3));
@@ -110,6 +118,8 @@ public static class GameLoop
                 goto goto1;
             }
         }
+        RenderingNameSpace.Rendering.ClearConsole();
+        Console.WriteLine("Game ended with "+gameEndMode);
     }
 
     public static FigureNames AskPawnTransformation()

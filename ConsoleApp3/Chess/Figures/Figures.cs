@@ -47,7 +47,7 @@ public static class CanHit
         {
             if (color == Side.White)
             {
-                result&= FieldNameSpace.Field.SingleField.Table[i, j] switch
+                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch
                 {
                     FigureNames.BishopW => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightW => Knight.KnightCanMove(new[] { i, j }, cell),
@@ -59,7 +59,7 @@ public static class CanHit
             }
             else
             {
-                result&= FieldNameSpace.Field.SingleField.Table[i, j] switch
+                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch
                 {
                     FigureNames.BishopB => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightB => Knight.KnightCanMove(new[] { i, j }, cell),
