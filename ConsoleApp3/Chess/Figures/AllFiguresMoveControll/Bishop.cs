@@ -12,7 +12,11 @@ public static class Bishop
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         return true;
     }
-    
+
+    private static Boolean BishopCanMove()
+    {
+        throw new NotImplementedException();
+    }
     private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
     {
         SByte[] CheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };

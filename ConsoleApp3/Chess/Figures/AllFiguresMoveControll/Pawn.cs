@@ -9,14 +9,19 @@ public static class Pawn
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
-        if (!(isThisFigureMove(from, to) || isPawnTake(from, to))) return false;
-        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
-        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
+        if (!PawnCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         checkIfTheLastLine(to);
         return true;
     }
 
+    public static Boolean PawnCanMove(SByte[] from, SByte[] to)
+    {
+        if (!(isThisFigureMove(from, to) || isPawnTake(from, to))) return false;
+        if (GeneralFigureMethods.HasAnotherThisColorFigure(from, to)) return false;
+        if (GeneralFigureMethods.HasAnotherFigureInMoveLine(from, to)) return false;
+        return true;
+    }
     private static Boolean isThisFigureMove(SByte[] from, SByte[] to)
     {
         if (from[1] != to[1]) return false;
