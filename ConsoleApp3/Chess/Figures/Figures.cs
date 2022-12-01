@@ -59,7 +59,8 @@ public static class CanHit
             }
             else
             {
-                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch
+                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch //TODO Unhandled exception. System.Runtime.CompilerServices.SwitchExpressionException: Non-exhaustive switch expression failed to match its input.                                                                        Unmatched value was RookW.                                                                                                                                                                                         
+   //at FiguresNameSpace.CanHit.CanHitCell(SByte[] cell, Side color) in /home/maximus/Прога_для_души/C#/Chess_cons/ConsoleApp3/Chess/Figures/Figures.cs:line 62 
                 {
                     FigureNames.BishopB => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightB => Knight.KnightCanMove(new[] { i, j }, cell),
