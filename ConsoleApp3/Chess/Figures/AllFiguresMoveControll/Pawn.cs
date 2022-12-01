@@ -10,8 +10,9 @@ public static class Pawn
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
         if (!PawnCanMove(from, to)) return false;
-        GeneralFigureMethods.MoveFigureFromTo(from,to);
         if(isEnPassant(from,to)) removePassantPawn();
+        GeneralFigureMethods.MoveFigureFromTo(from,to);
+        
         checkIfTheLastLine(to);
         return true;
     }
