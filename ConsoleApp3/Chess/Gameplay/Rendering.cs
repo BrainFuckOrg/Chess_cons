@@ -57,7 +57,7 @@ public static class Rendering
         }
     }
 
-    private static void ClearConsole()
+    public static void ClearConsole()
     {
         Console.SetCursorPosition(0,0);
         for (int i = 0; i < Console.WindowHeight; i++)

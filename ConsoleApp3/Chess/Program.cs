@@ -7,6 +7,8 @@ namespace Chess
         public static void Main()
         {
             GameStartNameSpace.GameStart.NewGame();
+            //Console.WriteLine("Press any key to exit");
+            //Console.ReadKey(true);
         }
     }
 }
