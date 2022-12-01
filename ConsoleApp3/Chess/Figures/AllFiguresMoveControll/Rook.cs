@@ -2,7 +2,7 @@ using ConsoleApp3;
 
 namespace Figure;
 
-public static class Rock
+public static class Rook
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
