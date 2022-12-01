@@ -9,6 +9,7 @@ public static class Rook
         if (!RookCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         Castling.RookMove(from);
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
         return true;
     }
 

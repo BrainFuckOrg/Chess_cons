@@ -8,6 +8,7 @@ public static class Queen
     {
         if (!QueenCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
         return true;
     }
 

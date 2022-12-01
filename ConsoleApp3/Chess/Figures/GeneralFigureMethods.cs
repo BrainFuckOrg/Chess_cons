@@ -54,4 +54,51 @@ public static class GeneralFigureMethods
         table[to[0], to[1]] = table[from[0], from[1]];
         table[from[0], from[1]] = FigureNames.Empty;
     }
+
+    public static Boolean IsKingChecked(Side side)
+    {
+        FigureNames[,] Table = Field.SingleField.Table;
+        FigureNames searchedFigure;
+        switch (side)
+        {
+            case Side.White:
+                searchedFigure = FigureNames.KingW;
+                break;
+            case Side.Black:
+                searchedFigure = FigureNames.KingB;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(side), side, null);
+        }
+
+        for (SByte col = 0; col < 7; col++)
+        for (SByte row = 0; row < 7; row++)
+        {
+            if (Table[col, row] == searchedFigure)
+            {
+                return CanHit.CanHitCell(new[] { col, row }, side == Side.Black ? Side.White : Side.Black);
+            }
+        }
+
+        throw new Exception("You haven't King on the board");
+
+    }
+
+    public static Boolean IsKingChecked(SByte[] from)
+    {
+        FigureNames[,] Table = Field.SingleField.Table;
+        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
+        {
+            return IsKingChecked(Side.Black);
+        }
+
+        return IsKingChecked(Side.White);
+    }
+
+    public static Boolean checkKingCheckedAndRemoveLastMoveIfChecked(SByte[] from, SByte[] to)
+    {
+        if (!IsKingChecked(from)) return true;
+        MoveFigureFromTo(to,from);
+        return false;
+    }
 }

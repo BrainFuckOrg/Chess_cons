@@ -9,6 +9,8 @@ public static class King
         if (!KingCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         Castling.KingMove(from);
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+
         return true;
     }
 

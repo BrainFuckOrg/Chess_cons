@@ -10,11 +10,27 @@ public static class Pawn
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
         if (!PawnCanMove(from, to)) return false;
-        if(isEnPassant(from,to)) removePassantPawn();
+        Boolean wasPassant = isEnPassant(from, to);
+        if(wasPassant) removePassantPawn();
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-        
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to))
+            if (wasPassant)
+            {
+                addPassantPawn();
+                return false;
+            };
         checkIfTheLastLine(to);
         return true;
+    }
+
+    private static void addPassantPawn()
+    {
+        FigureNames[,] Table = Field.SingleField.Table;
+        FigureNames figure;
+        SByte[] startCoordinates;
+        SByte[] endCoordinates;
+        JournalNamespace.Journal.GetLastMove(out figure, out startCoordinates, out endCoordinates);
+        Table[endCoordinates[0], endCoordinates[1]] = figure;
     }
 
     public static Boolean PawnCanMove(SByte[] from, SByte[] to)

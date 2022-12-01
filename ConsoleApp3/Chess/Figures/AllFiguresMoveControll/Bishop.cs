@@ -8,6 +8,8 @@ public static class Bishop
     {
         if (!BishopCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+
         return true;
     }
 

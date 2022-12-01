@@ -11,6 +11,8 @@ public static class Knight
     {
         if (!KnightCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
+        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+
         return true;
     }
 
