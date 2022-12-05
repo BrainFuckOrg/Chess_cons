@@ -13,7 +13,7 @@ public static class LogWritter
 
     public static void Logging(String info)
     {
-        StreamWriter sw = new StreamWriter(path1, false);
+        StreamWriter sw = new StreamWriter(path1, true);
         sw.WriteLine(info);
         sw.Close();
     }
