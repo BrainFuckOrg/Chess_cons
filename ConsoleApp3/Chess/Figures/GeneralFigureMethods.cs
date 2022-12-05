@@ -71,8 +71,8 @@ public static class GeneralFigureMethods
                 throw new ArgumentOutOfRangeException(nameof(side), side, null);
         }
 
-        for (SByte col = 0; col < 7; col++)
-        for (SByte row = 0; row < 7; row++)
+        for (SByte col = 0; col < 8; col++)
+        for (SByte row = 0; row < 8; row++)
         {
             if (Table[col, row] == searchedFigure)
             {
