@@ -54,7 +54,8 @@ public static class CanHit
                     FigureNames.RookW => Rook.RookCanMove(new[] { i, j }, cell),
                     FigureNames.QueenW => Queen.QueenCanMove(new[] { i, j }, cell),
                     FigureNames.PawnW => Pawn.PawnCanMove(new[] { i, j }, cell),
-                    FigureNames.KingW => King.KingCanMove(new[] { i, j }, cell)
+                    FigureNames.KingW => King.KingCanMove(new[] { i, j }, cell),
+                    _=>false
                 };
             }
             else
