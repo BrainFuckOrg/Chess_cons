@@ -54,13 +54,12 @@ public static class CanHit
                     FigureNames.RookW => Rook.RookCanMove(new[] { i, j }, cell),
                     FigureNames.QueenW => Queen.QueenCanMove(new[] { i, j }, cell),
                     FigureNames.PawnW => Pawn.PawnCanMove(new[] { i, j }, cell),
-                    FigureNames.KingW => King.KingCanMove(new[] { i, j }, cell),
+                    FigureNames.KingW => King.KingCanMove(new[] { i, j }, cell)
                 };
             }
             else
             {
-                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch //TODO Unhandled exception. System.Runtime.CompilerServices.SwitchExpressionException: Non-exhaustive switch expression failed to match its input.                                                                        Unmatched value was RookW.                                                                                                                                                                                         
-   //at FiguresNameSpace.CanHit.CanHitCell(SByte[] cell, Side color) in /home/maximus/Прога_для_души/C#/Chess_cons/ConsoleApp3/Chess/Figures/Figures.cs:line 62 
+                result|= FieldNameSpace.Field.SingleField.Table[i, j] switch
                 {
                     FigureNames.BishopB => Bishop.BishopCanMove(new[] { i, j }, cell),
                     FigureNames.KnightB => Knight.KnightCanMove(new[] { i, j }, cell),
@@ -68,6 +67,7 @@ public static class CanHit
                     FigureNames.QueenB => Queen.QueenCanMove(new[] { i, j }, cell),
                     FigureNames.PawnB => Pawn.PawnCanMove(new[] { i, j }, cell),
                     FigureNames.KingB => King.KingCanMove(new[] { i, j }, cell),
+                    _=>false
                 };
             }
         }
