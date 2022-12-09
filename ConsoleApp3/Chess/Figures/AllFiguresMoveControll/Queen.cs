@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using FieldNameSpace;
 
 namespace Figure;
 
@@ -6,9 +7,14 @@ public static class Queen
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Field.CreateCheckPoint();
         if (!QueenCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+        if (GeneralFigureMethods.IsKingChecked(to))
+        {
+            Field.Rollback();
+            return false;
+        }
         return true;
     }
 

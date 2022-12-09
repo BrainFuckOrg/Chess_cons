@@ -9,9 +9,14 @@ public static class Knight
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Field.CreateCheckPoint();
         if (!KnightCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+        if (GeneralFigureMethods.IsKingChecked(to))
+        {
+            Field.Rollback();
+            return false;
+        }
 
         return true;
     }

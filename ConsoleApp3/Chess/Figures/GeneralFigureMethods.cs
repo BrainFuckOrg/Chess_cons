@@ -94,12 +94,4 @@ public static class GeneralFigureMethods
 
         return IsKingChecked(Side.White);
     }
-
-    public static Boolean checkKingCheckedAndRemoveLastMoveIfChecked(SByte[] from, SByte[] to)
-    {
-        //Loger.LogWritter.Logging(IsKingChecked(Side.Black) + " " + IsKingChecked(Side.White));
-        if (!IsKingChecked(to)) return true;
-        MoveFigureFromTo(to,from);
-        return false;
-    }
 }

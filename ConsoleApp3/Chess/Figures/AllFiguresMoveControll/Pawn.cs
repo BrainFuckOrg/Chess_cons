@@ -9,16 +9,16 @@ public static class Pawn
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Field.CreateCheckPoint();
         if (!PawnCanMove(from, to)) return false;
         Boolean wasPassant = isEnPassant(from, to);
         if(wasPassant) removePassantPawn();
         GeneralFigureMethods.MoveFigureFromTo(from,to);
-        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to))
-            if (wasPassant)
-            {
-                addPassantPawn();
-                return false;
-            };
+        if (GeneralFigureMethods.IsKingChecked(to))
+        {
+            Field.Rollback();
+            return false;
+        }
         checkIfTheLastLine(to);
         return true;
     }

@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using FieldNameSpace;
 
 namespace Figure;
 
@@ -6,10 +7,15 @@ public static class Rook
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Field.CreateCheckPoint();
         if (!RookCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
         Castling.RookMove(from);
-        if (!GeneralFigureMethods.checkKingCheckedAndRemoveLastMoveIfChecked(from, to)) return false;
+        if (GeneralFigureMethods.IsKingChecked(to))
+        {
+            Field.Rollback();
+            return false;
+        }
         return true;
     }
 
