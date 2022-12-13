@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices.ComTypes;
 using ConsoleApp3;
+using ConsoleApp3.Loger;
 using Figure;
 using FiguresNameSpace;
 
@@ -8,15 +9,15 @@ namespace IsEndNameSpace;
 public static class IsEnd
 {
     public static Boolean End { get; set; }
-
     static IsEnd()
     {
         End = false;
     }
     public static Boolean CheckEnd(SByte[] from)
     {
+        LogWritter.Logging(String.Format("call: CheckEnd({0},{1})",from[0],from[1]));
         FigureNames[,] Table = FieldNameSpace.Field.SingleField.Table;
-        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
+        if (!FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
         {
             return CheckEnd(Side.Black);
         }
@@ -25,6 +26,7 @@ public static class IsEnd
     }
     private static bool CheckEnd(Side side)
     {
+        LogWritter.Logging("call: CheckEnd("+side+")");
         for (SByte i = 0; i < 8; i++)
         {
             for (SByte j = 0; j < 8; j++)
@@ -82,6 +84,7 @@ public static class IsEnd
             }
         }
         End = true;
+        GameLoopNameSpace.GameLoop.gameEndMode = (side==Side.White?"black":"white")+" victory";
         return true;
     }
 }

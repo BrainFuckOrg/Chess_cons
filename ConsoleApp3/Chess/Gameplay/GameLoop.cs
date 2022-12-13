@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using ConsoleApp3.Loger;
 using Figure;
 using FiguresNameSpace;
 using IsEndNameSpace;
@@ -11,13 +12,13 @@ public static class GameLoop
     public static char[] AllowedLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
     public static char[] AllowedNumbers = { '1', '2', '3', '4', '5', '6', '7', '8' };
     private static string _transformHelper;
-
+    public static string gameEndMode;
     
     public static void Loop()
     {
-        
+        LogWritter.Logging("call: Loop()");
         int moveUp = 0;
-        string gameEndMode = "";
+        gameEndMode = "";
         while (true)
         {
             moveUp = 0;
