@@ -13,7 +13,17 @@ public static class IsEnd
     {
         End = false;
     }
-    public static bool CheckEnd(Side side)
+    public static Boolean CheckEnd(SByte[] from)
+    {
+        FigureNames[,] Table = FieldNameSpace.Field.SingleField.Table;
+        if (FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
+        {
+            return CheckEnd(Side.Black);
+        }
+
+        return CheckEnd(Side.White);
+    }
+    private static bool CheckEnd(Side side)
     {
         for (SByte i = 0; i < 8; i++)
         {
