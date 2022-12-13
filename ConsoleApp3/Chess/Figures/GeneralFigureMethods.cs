@@ -94,4 +94,15 @@ public static class GeneralFigureMethods
 
         return IsKingChecked(Side.White);
     }
+    
+    public static Boolean IsEnemyKingChecked(SByte[] from)
+    {
+        FigureNames[,] Table = Field.SingleField.Table;
+        if (!FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
+        {
+            return IsKingChecked(Side.Black);
+        }
+
+        return IsKingChecked(Side.White);
+    }
 }
