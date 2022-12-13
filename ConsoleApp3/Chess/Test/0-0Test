@@ -78,3 +78,41 @@ Re1-f1
 0-0
 
 ___________
+6 (Test castling with hit fields)
+___________
+e2-e4
+e7-e5
+Qd1-h5
+Ng8-f6
+Ng1-f3
+Bf8-c5
+Qh5-e5
+0-0
+
+___________
+7 (Test castling with hit fields)
+___________
+e2-e4
+e7-e5
+Qd1-h5
+Ng8-f6
+Ng1-f3
+Bf8-c5
+Qh5-h7
+0-0
+
+___________
+8 (Test castling with hit rook)
+___________
+e2-e4
+e7-e5
+Qd1-h5
+Ng8-f6
+Ng1-f3
+Bf8-c5
+Nf3-g1
+h7-h6
+Qh5-h6
+0-0
+
+___________
