@@ -21,7 +21,7 @@ public static class GameLoop
         {
             moveUp = 0;
             RenderingNameSpace.Rendering.ShowField(moveUp);
-            if(IsEndNameSpace.IsEnd.CheckEnd())break;
+            if(IsEndNameSpace.IsEnd.End)break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
             whiteMove = !whiteMove;
             goto1:
