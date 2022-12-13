@@ -34,7 +34,7 @@ public static class IsEnd
                     for (SByte j2 = 0; j2 < 8; j2++)
                     {
                         FieldNameSpace.Field.CreateCheckPoint();
-                        if (side == Side.White)
+                        if (side != Side.White)
                         {
                             switch (FieldNameSpace.Field.SingleField.Table[i, j])
                             {
