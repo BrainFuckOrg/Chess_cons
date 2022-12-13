@@ -1,3 +1,4 @@
+using ConsoleApp3;
 using Figure;
 using FiguresNameSpace;
 using IsEndNameSpace;
@@ -117,6 +118,17 @@ public static class GameLoop
                 Console.WriteLine("Wrong coordinates, try again");
                 goto goto1;
             }
+
+            if (GeneralFigureMethods.IsEnemyKingChecked(new sbyte[]
+                {
+                    (SByte)Array.IndexOf(AllowedNumbers, code[code.Length == 6 ? 5 : 4]),
+                    (SByte)Array.IndexOf(AllowedLetters, code[code.Length == 6 ? 4 : 3])
+                }))
+                IsEnd.CheckEnd(new sbyte[]
+                {
+                    (SByte)Array.IndexOf(AllowedNumbers, code[code.Length == 6 ? 5 : 4]),
+                    (SByte)Array.IndexOf(AllowedLetters, code[code.Length == 6 ? 4 : 3])
+                });
         }
         RenderingNameSpace.Rendering.ClearConsole();
         Console.WriteLine("Game ended with "+gameEndMode);
