@@ -1,3 +1,4 @@
+using ArraySumNameSpace;
 using ConsoleApp3;
 using FieldNameSpace;
 using FiguresNameSpace;
@@ -34,8 +35,36 @@ public static class Castling
         };
     }
 
+    private static Boolean IsHitFields(SByte[] from, SByte[] to, Side color)
+    {
+        if (CanHit.CanHitCell(from, color)) return true;
+        SByte[] SumedCheckCoors = { (SByte)(from[0] - to[0]), (SByte)(from[1] - to[1]) };
+
+        SByte numOfIterations = Math.Max(Math.Abs(SumedCheckCoors[0]), Math.Abs(SumedCheckCoors[1]));
+        if (SumedCheckCoors[0] != 0 && SumedCheckCoors[1] != 0)
+        {
+            SumedCheckCoors[1] = (SByte)(SumedCheckCoors[1] < 0 ? 1 : -1);
+            SumedCheckCoors[0] = (SByte)(SumedCheckCoors[0] < 0 ? 1 : -1);
+        }
+        else
+        {
+            if (SumedCheckCoors[0] == 0) SumedCheckCoors[1] = (SByte)(SumedCheckCoors[1] < 0 ? 1 : -1);
+            else SumedCheckCoors[0] = (SByte)(SumedCheckCoors[0] < 0 ? 1 : -1);
+        }
+
+        SByte[] newArr = (SByte[])from.Clone();
+        for (SByte i = 0; i < numOfIterations; i++)
+        {
+            newArr = ArraySum.sum(newArr, SumedCheckCoors); 
+            if (CanHit.CanHitCell(newArr, color)) return true;
+        }
+
+        return false;
+    }
+
     private static Boolean BlackCastleMoveShort()
     {
+        if (IsHitFields(BlackKing, new SByte[] { 7, 6 },Side.White)) return false;
         SByte[] rookPos = { 7, 7 };
         if (!BlackCastle.Contains(CastleType.Short)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
@@ -46,6 +75,7 @@ public static class Castling
 
     private static Boolean BlackCastleMoveLong()
     {        
+        if (IsHitFields(BlackKing, new SByte[] { 7, 2 },Side.White)) return false;
         SByte[] rookPos = { 7, 0 };
         if (!BlackCastle.Contains(CastleType.Long)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
@@ -66,6 +96,7 @@ public static class Castling
 
     private static Boolean WhiteCastleMoveShort()
     {        
+        if (IsHitFields(WhiteKing, new SByte[] { 0, 6 },Side.Black)) return false;
         SByte[] rookPos = { 0, 7 };
         if (!WhiteCastle.Contains(CastleType.Short)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
@@ -76,6 +107,7 @@ public static class Castling
 
     private static Boolean WhiteCastleMoveLong()
     {        
+        if (IsHitFields(WhiteKing, new SByte[] { 0, 2 },Side.Black)) return false;
         SByte[] rookPos = { 0, 0 };
         if (!WhiteCastle.Contains(CastleType.Long)) return false;
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
