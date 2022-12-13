@@ -71,6 +71,7 @@ public static class IsEnd
                 }
             }
         }
+        End = true;
         return true;
     }
 }
