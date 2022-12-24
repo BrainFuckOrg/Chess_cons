@@ -22,14 +22,14 @@ public class Field
     private static bool exists = false;
     public static void Create(FigureNames[,] table)
     {
-        LogWritter.Logging("call: Create(...)");
+        //LogWritter.Logging("call: Create(...)");
         if (!exists) SingleField= new Field(table);
         else throw new Exception();
     }
     
     public static void CreateCheckPoint()
     {
-        LogWritter.Logging("call: CreateCheckPoint()");
+        //LogWritter.Logging("call: CreateCheckPoint()");
         Array.Copy(SingleField.Table,_checkPoint,64);
     }
     public static void CreateBackup()
@@ -63,7 +63,7 @@ public class Field
     }
     public static void Rollback()
     {
-        LogWritter.Logging("call: Rollback()");
+        //LogWritter.Logging("call: Rollback()");
         Array.Copy(_checkPoint,SingleField.Table,64);
     }
 }

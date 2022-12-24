@@ -16,7 +16,7 @@ public static class IsEnd
 
     public static void CheckPat(Side side)
     {
-        LogWritter.Logging("call: CheckPat("+side+")");
+        //LogWritter.Logging("call: CheckPat("+side+")");
         for (SByte i = 0; i < 8; i++)
         {
             for (SByte j = 0; j < 8; j++)
@@ -68,7 +68,7 @@ public static class IsEnd
     }
     public static Boolean CheckEnd(SByte[] from)
     {
-        LogWritter.Logging(String.Format("call: CheckEnd({0},{1})",from[0],from[1]));
+        //LogWritter.Logging(String.Format("call: CheckEnd({0},{1})",from[0],from[1]));
         FigureNames[,] Table = FieldNameSpace.Field.SingleField.Table;
         if (!FiguresNameSpace.Figure.BlackFigures.Contains(Table[from[0],from[1]]))
         {
@@ -79,7 +79,7 @@ public static class IsEnd
     }
     private static bool CheckEnd(Side side)
     {
-        LogWritter.Logging("call: CheckEnd("+side+")");
+        //LogWritter.Logging("call: CheckEnd("+side+")");
         for (SByte i = 0; i < 8; i++)
         {
             for (SByte j = 0; j < 8; j++)
