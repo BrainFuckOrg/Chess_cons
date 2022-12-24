@@ -10,8 +10,8 @@ namespace Figure;
 
 public static class Castling
 {
-    private static List<CastleType> WhiteCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
-    private static List<CastleType> BlackCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
+    public static List<CastleType> WhiteCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
+    public static List<CastleType> BlackCastle = new List<CastleType>{ CastleType.Short, CastleType.Long };
     private static SByte[] BlackKing = { 7, 4 };
     private static SByte[] WhiteKing = { 0, 4 };
     

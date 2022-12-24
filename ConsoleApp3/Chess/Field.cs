@@ -1,6 +1,7 @@
 using System.Dynamic;
 using ConsoleApp3.Gameplay;
 using ConsoleApp3.Loger;
+using Figure;
 using FiguresNameSpace;
 
 namespace FieldNameSpace;
@@ -8,6 +9,8 @@ namespace FieldNameSpace;
 public class Field
 {
     private static Int16 _countBackup;
+    private static List<CastleType> _castleTypesW;
+    private static List<CastleType> _castleTypesB;
     static Field()
     {
         Backup = new List<FigureNames[,]>();
@@ -33,6 +36,17 @@ public class Field
     {
         //LogWritter.Logging("call: CreateCheckPoint()");
         _countBackup = MoveCounter.count;
+        _castleTypesW = new List<CastleType>();
+        foreach (CastleType c in Castling.WhiteCastle)
+        {
+            _castleTypesW.Add(c);
+        }
+
+        _castleTypesB = new List<CastleType>();
+        foreach (CastleType c in Castling.BlackCastle)
+        {
+            _castleTypesB.Add(c);
+        }
         Array.Copy(SingleField.Table,_checkPoint,64);
     }
     public static void CreateBackup()
@@ -68,6 +82,18 @@ public class Field
     {
         //LogWritter.Logging("call: Rollback()");
         MoveCounter.count = _countBackup;
+        //_countBackup = MoveCounter.count;
+        Castling.WhiteCastle = new List<CastleType>();
+        foreach (CastleType c in _castleTypesW)
+        {
+            Castling.WhiteCastle.Add(c);
+        }
+
+        Castling.BlackCastle = new List<CastleType>();
+        foreach (CastleType c in _castleTypesB)
+        {
+            Castling.BlackCastle.Add(c);
+        }
         Array.Copy(_checkPoint,SingleField.Table,64);
     }
 }
