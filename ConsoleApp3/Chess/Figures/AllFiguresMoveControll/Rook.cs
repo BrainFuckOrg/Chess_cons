@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using FieldNameSpace;
 
 namespace Figure;
@@ -7,6 +8,7 @@ public static class Rook
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Boolean eatFigure = GeneralFigureMethods.HasAnotherFigure(to);
         Field.CreateCheckPoint();
         if (!RookCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
@@ -16,6 +18,8 @@ public static class Rook
             Field.Rollback();
             return false;
         }
+        if(eatFigure) MoveCounter.nullable();
+        MoveCounter.move();
         return true;
     }
 

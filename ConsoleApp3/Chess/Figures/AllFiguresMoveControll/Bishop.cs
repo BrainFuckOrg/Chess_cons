@@ -1,6 +1,6 @@
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using FieldNameSpace;
-using FiguresNameSpace;
 
 namespace Figure;
 
@@ -8,6 +8,7 @@ public static class Bishop
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+        Boolean eatFigure = GeneralFigureMethods.HasAnotherFigure(to);
         Field.CreateCheckPoint();
         if (!BishopCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
@@ -16,7 +17,8 @@ public static class Bishop
             Field.Rollback();
             return false;
         }
-
+        if(eatFigure) MoveCounter.nullable();
+        MoveCounter.move();
         return true;
     }
 

@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using FiguresNameSpace;
 
 namespace Figure;
@@ -9,6 +10,8 @@ public static class Knight
 {
     public static Boolean CheckAndMove(SByte[] from, SByte[] to)
     {
+                
+        Boolean eatFigure = GeneralFigureMethods.HasAnotherFigure(to);
         Field.CreateCheckPoint();
         if (!KnightCanMove(from, to)) return false;
         GeneralFigureMethods.MoveFigureFromTo(from,to);
@@ -17,7 +20,8 @@ public static class Knight
             Field.Rollback();
             return false;
         }
-
+        if(eatFigure) MoveCounter.nullable();
+        MoveCounter.move();
         return true;
     }
 

@@ -1,5 +1,6 @@
 using ArraySumNameSpace;
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using FieldNameSpace;
 using FiguresNameSpace;
 
@@ -70,6 +71,7 @@ public static class Castling
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 6 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 5 });
+        MoveCounter.move();
         return true;
     }
 
@@ -81,6 +83,7 @@ public static class Castling
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(BlackKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(BlackKing, new SByte[] { 7, 2 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 7, 3 });
+        MoveCounter.move();
         return true;
     }
 
@@ -102,6 +105,7 @@ public static class Castling
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(WhiteKing, new SByte[] { 0, 6 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 0, 5 });
+        MoveCounter.move();
         return true;
     }
 
@@ -113,6 +117,7 @@ public static class Castling
         if (GeneralFigureMethods.HasAnotherFigureInMoveLine(WhiteKing, rookPos)) return false;
         GeneralFigureMethods.MoveFigureFromTo(WhiteKing, new SByte[] { 0, 2 });
         GeneralFigureMethods.MoveFigureFromTo(rookPos, new SByte[] { 0, 3 });
+        MoveCounter.move();
         return true;
     }
 

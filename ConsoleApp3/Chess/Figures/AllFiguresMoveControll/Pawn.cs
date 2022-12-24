@@ -1,4 +1,5 @@
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using FieldNameSpace;
 using FiguresNameSpace;
 using GameLoopNameSpace;
@@ -20,6 +21,7 @@ public static class Pawn
             return false;
         }
         checkIfTheLastLine(to);
+        MoveCounter.nullable();
         return true;
     }
 

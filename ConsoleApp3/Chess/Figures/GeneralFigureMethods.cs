@@ -19,6 +19,11 @@ public static class GeneralFigureMethods
 
         return FiguresNameSpace.Figure.WhiteFigures.Contains(Table[to[0], to[1]]);
     }
+
+    public static Boolean HasAnotherFigure(SByte[] to)
+    {
+        return Field.SingleField.Table[to[0], to[1]] != FigureNames.Empty;
+    }
     
     public static Boolean HasAnotherFigureInMoveLine(SByte[] from, SByte[] to)
     {
