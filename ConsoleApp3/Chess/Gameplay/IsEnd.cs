@@ -13,6 +13,59 @@ public static class IsEnd
     {
         End = false;
     }
+
+    public static void CheckPat(Side side)
+    {
+        LogWritter.Logging("call: CheckPat("+side+")");
+        for (SByte i = 0; i < 8; i++)
+        {
+            for (SByte j = 0; j < 8; j++)
+            {
+                for (SByte i2 = 0; i2 < 8; i2++)
+                {
+                    for (SByte j2 = 0; j2 < 8; j2++)
+                    {
+                        bool check;
+                        FieldNameSpace.Field.CreateCheckPoint();
+                        if (side != Side.White)
+                        {
+                            check = FieldNameSpace.Field.SingleField.Table[i, j] switch
+                            {
+                                FigureNames.BishopB => Bishop.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.KingB => King.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.KnightB => Knight.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.PawnB => Pawn.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.QueenB => Queen.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.RookB => Rook.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                _=>false
+                            };
+                        }
+                        else
+                        {
+                            check = FieldNameSpace.Field.SingleField.Table[i, j] switch
+                            {
+                                FigureNames.BishopW => Bishop.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.KingW => King.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.KnightW => Knight.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.PawnW => Pawn.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.QueenW=> Queen.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                FigureNames.RookW=> Rook.CheckAndMove(new[] { i, j }, new[] { i2, j2 }),
+                                _=>false
+                            };
+                        }
+
+                        if (check)
+                        {
+                            FieldNameSpace.Field.Rollback();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        End = true;
+        GameLoopNameSpace.GameLoop.gameEndMode = (side==Side.White?"white":"black")+" pat";
+    }
     public static Boolean CheckEnd(SByte[] from)
     {
         LogWritter.Logging(String.Format("call: CheckEnd({0},{1})",from[0],from[1]));

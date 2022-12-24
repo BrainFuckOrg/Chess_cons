@@ -23,6 +23,7 @@ public static class GameLoop
         {
             moveUp = 0;
             RenderingNameSpace.Rendering.ShowField(moveUp);
+            //IsEnd.CheckPat(whiteMove?Side.White:Side.Black);
             if (IsEndNameSpace.IsEnd.End) break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
             whiteMove = !whiteMove;
@@ -202,6 +203,7 @@ public static class GameLoop
                     (SByte)Array.IndexOf(AllowedNumbers, code[code.Length == 6 ? 5 : 4]),
                     (SByte)Array.IndexOf(AllowedLetters, code[code.Length == 6 ? 4 : 3])
                 });
+                if(!IsEnd.End)IsEnd.CheckPat(whiteMove?Side.White:Side.Black);
             }
         }
         //RenderingNameSpace.Rendering.ClearConsole();
