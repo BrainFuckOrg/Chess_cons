@@ -1,0 +1,19 @@
+1
+___________
+Position: (Generator.cs)
+___________
+        FigureNames[,] field = new FigureNames[8, 8];
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++) field[j, i] = FigureNames.Empty;
+        }
+
+        field[0, 0] = FigureNames.KingW;
+        field[0, 1] = FigureNames.QueenW;
+        field[7, 7] = FigureNames.KingB;
+        field[6, 0] = FigureNames.PawnB;
+
+        return field;
+___________
+Qb1-g6
+___________
