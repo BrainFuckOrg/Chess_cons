@@ -1,4 +1,5 @@
 using System.Dynamic;
+using ConsoleApp3.Gameplay;
 using ConsoleApp3.Loger;
 using FiguresNameSpace;
 
@@ -6,6 +7,7 @@ namespace FieldNameSpace;
 
 public class Field
 {
+    private static Int16 _countBackup;
     static Field()
     {
         Backup = new List<FigureNames[,]>();
@@ -30,6 +32,7 @@ public class Field
     public static void CreateCheckPoint()
     {
         //LogWritter.Logging("call: CreateCheckPoint()");
+        _countBackup = MoveCounter.count;
         Array.Copy(SingleField.Table,_checkPoint,64);
     }
     public static void CreateBackup()
@@ -64,6 +67,7 @@ public class Field
     public static void Rollback()
     {
         //LogWritter.Logging("call: Rollback()");
+        MoveCounter.count = _countBackup;
         Array.Copy(_checkPoint,SingleField.Table,64);
     }
 }
