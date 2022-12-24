@@ -1,5 +1,7 @@
 using ConsoleApp3;
+using ConsoleApp3.Gameplay;
 using ConsoleApp3.Loger;
+using FieldNameSpace;
 using Figure;
 using FiguresNameSpace;
 using IsEndNameSpace;
@@ -23,7 +25,7 @@ public static class GameLoop
         {
             moveUp = 0;
             RenderingNameSpace.Rendering.ShowField(moveUp);
-            //IsEnd.CheckPat(whiteMove?Side.White:Side.Black);
+            Field.CreateBackup();
             if (IsEndNameSpace.IsEnd.End) break;
             Console.WriteLine(whiteMove ? "White move:" : "Black move:");
             whiteMove = !whiteMove;
@@ -204,6 +206,11 @@ public static class GameLoop
                     (SByte)Array.IndexOf(AllowedLetters, code[code.Length == 6 ? 4 : 3])
                 });
                 if(!IsEnd.End)IsEnd.CheckPat(whiteMove?Side.White:Side.Black);
+                if (!IsEnd.End)
+                {
+                    IsEnd.End = MoveCounter.isEnd();
+                    if (MoveCounter.isEnd()) gameEndMode = "60 moves draw";
+                }
             }
         }
         //RenderingNameSpace.Rendering.ClearConsole();

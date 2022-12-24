@@ -64,7 +64,7 @@ public static class IsEnd
             }
         }
         End = true;
-        GameLoopNameSpace.GameLoop.gameEndMode = (side==Side.White?"white":"black")+" pat";
+        GameLoopNameSpace.GameLoop.gameEndMode = "stalemate";
     }
     public static Boolean CheckEnd(SByte[] from)
     {
